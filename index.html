@@ -1,21 +1,18 @@
-<style>
-  /* CSS untuk membuat wadah iframe responsif */
-  .responsive-iframe-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 100vh; /* 100vh = 100% dari tinggi layar browser */
-  }
-  .responsive-iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-</style>
+<iframe 
+  id="ujian-iframe"
+  src="https://script.google.com/macros/s/AKfycbyNuQanbp94ORCkAuh3Tb7qghXzt4cqjMKDeUvu19mcebHhYMLuqeanigTJwrjSy9qcqQ/exec" 
+  style="width: 100%; border: none; overflow: hidden;"
+  scrolling="no">
+</iframe>
 
-<div class="responsive-iframe-container">
-  <iframe src="https://script.google.com/macros/s/AKfycbyNuQanbp94ORCkAuh3Tb7qghXzt4cqjMKDeUvu19mcebHhYMLuqeanigTJwrjSy9qcqQ/exec"></iframe>
-</div>
+<script>
+  window.addEventListener('message', function(event) {
+    // Pastikan pesan berasal dari sumber yang Anda percaya jika perlu
+    // if (event.origin !== 'https://script.google.com') return;
+
+    if (event.data.frameHeight) {
+      var iframe = document.getElementById('ujian-iframe');
+      iframe.style.height = event.data.frameHeight + 'px';
+    }
+  }, false);
+</script>
